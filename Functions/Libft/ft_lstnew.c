@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcrenn <mcrenn@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/24 00:09:07 by mcrenn            #+#    #+#             */
-/*   Updated: 2026/01/15 14:21:31 by mcrenn           ###   ########.fr       */
+/*   Created: 2025/11/05 12:43:09 by mcrenn            #+#    #+#             */
+/*   Updated: 2026/01/16 10:44:55 by mcrenn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/push_swap.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+t_node	*ft_lstnew(int nb)
 {
-	void	*tab;
+	t_node	*head;
 
-	if (nmemb == 0 || size == 0)
-	{
-		tab = malloc(0);
-		if (tab == NULL)
-			return (NULL);
-		return (tab);
-	}
-	if (nmemb > (size_t) - 1 / size)
+	head = ft_calloc(1, sizeof(t_node));
+	if (!head)
 		return (NULL);
-	tab = malloc(nmemb * size);
-	if (tab == NULL)
-		return (NULL);
-	ft_bzero(tab, nmemb * size);
-	return (tab);
+	head->nb = nb;
+	return (head);
 }

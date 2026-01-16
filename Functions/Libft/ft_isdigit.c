@@ -1,33 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcrenn <mcrenn@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/24 00:09:07 by mcrenn            #+#    #+#             */
-/*   Updated: 2026/01/15 14:21:31 by mcrenn           ###   ########.fr       */
+/*   Created: 2025/10/13 15:39:16 by mcrenn            #+#    #+#             */
+/*   Updated: 2026/01/15 14:39:04 by mcrenn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/push_swap.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+int	ft_isdigit(int c)
 {
-	void	*tab;
-
-	if (nmemb == 0 || size == 0)
-	{
-		tab = malloc(0);
-		if (tab == NULL)
-			return (NULL);
-		return (tab);
-	}
-	if (nmemb > (size_t) - 1 / size)
-		return (NULL);
-	tab = malloc(nmemb * size);
-	if (tab == NULL)
-		return (NULL);
-	ft_bzero(tab, nmemb * size);
-	return (tab);
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }

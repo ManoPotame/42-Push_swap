@@ -1,45 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcrenn <mcrenn@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/14 10:05:45 by mcrenn            #+#    #+#             */
-/*   Updated: 2026/01/16 15:19:01 by mcrenn           ###   ########.fr       */
+/*   Created: 2025/10/24 06:03:20 by mcrenn            #+#    #+#             */
+/*   Updated: 2026/01/16 13:15:46 by mcrenn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/push_swap.h"
 
-void	fill_linked_list(int nb, t_node *stack_a)
-{
-	t_node	*node;
-
-	node = ft_lstnew(nb);
-	ft_lstadd_back(&stack_a, node);
-}
-
-int main(int argc, char const *argv[])
+char	*ft_strdup(const char *s)
 {
 	int		i;
-	int		j;
-	int		nb = 0;
-	char	**separated_args;
-	t_node	*stack_a = NULL;
-	//t_node	*stack_b = NULL;
+	char	*dest;
 
-	i = 1;
-	while (i < argc)
+	if (!s)
+		return (NULL);
+	i = 0;
+	dest = ft_calloc(ft_strlen(s) + 1, sizeof(char));
+	if (!dest)
+		return (NULL);
+	while (s[i])
 	{
-		j = 0;
-		separated_args = ft_split(argv[i], ' ');
-		while (separated_args[j])
-		{
-			nb = ft_atoi(separated_args[j]);
-			fill_linked_list(nb, stack_a);
-			j++;
-		}
+		dest[i] = s[i];
 		i++;
 	}
+	return (dest);
 }

@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcrenn <mcrenn@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/24 00:09:07 by mcrenn            #+#    #+#             */
-/*   Updated: 2026/01/15 14:21:31 by mcrenn           ###   ########.fr       */
+/*   Created: 2025/10/26 13:35:50 by mcrenn            #+#    #+#             */
+/*   Updated: 2026/01/16 11:12:15 by mcrenn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/push_swap.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	void	*tab;
+	char	*dest;
+	size_t	i;
 
-	if (nmemb == 0 || size == 0)
+	i = 0;
+	if (!s)
+		return (NULL);
+	if ((size_t)start >= ft_strlen(s))
 	{
-		tab = malloc(0);
-		if (tab == NULL)
-			return (NULL);
-		return (tab);
+		dest = ft_strdup("");
+		return (dest);
 	}
-	if (nmemb > (size_t) - 1 / size)
+	while (s[start + i] && i < len)
+		i++;
+	dest = ft_calloc((i + 1), sizeof(char));
+	if (dest == 0)
 		return (NULL);
-	tab = malloc(nmemb * size);
-	if (tab == NULL)
-		return (NULL);
-	ft_bzero(tab, nmemb * size);
-	return (tab);
+	ft_strlcpy(dest, s + start, i + 1);
+	return (dest);
 }
