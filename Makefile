@@ -7,6 +7,7 @@ SRC =	ft_atoi.c \
 		ft_calloc.c \
 		ft_isdigit.c \
 		ft_isint.c \
+		ft_isspace.c \
 		ft_lst_max_index.c \
 		ft_lstadd_back.c \
 		ft_lstlast.c \

@@ -6,7 +6,7 @@
 /*   By: mcrenn <mcrenn@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 10:44:45 by mcrenn            #+#    #+#             */
-/*   Updated: 2026/01/24 02:54:21 by mcrenn           ###   ########.fr       */
+/*   Updated: 2026/01/24 03:31:37 by mcrenn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ static void	reintegration_sort(t_node **stack_a, t_node **stack_b)
 		position = pos_index(stack_b, index_max);
 		if (position <= (node_counter(stack_b) / 2))
 		{
-			while (*stack_b && (*stack_b)->index != index_max)
+			while ((*stack_b)->index != index_max)
 				rotate_stack(stack_b, 'b');
 		}
 		else
 		{
-			while (*stack_b && (*stack_b)->index != index_max)
+			while ((*stack_b)->index != index_max)
 				reverse_rotate_stack(stack_b, 'b');
 		}
 		push_stack(stack_b, stack_a, 'a');
@@ -43,13 +43,13 @@ void	butterfly_sort(t_node **stack_a, t_node **stack_b)
 	int	delta;
 
 	threshold = 0;
-	delta = (node_counter(stack_a) / 20) + 8;
+	delta = (node_counter(stack_a) / 20) + 7;
 	while (*stack_a)
 	{
 		if ((*stack_a)->index <= threshold + delta)
 		{
 			push_stack(stack_a, stack_b, 'b');
-			if (*stack_a && (*stack_a)->index <= threshold)
+			if ((*stack_b)->index <= threshold)
 				rotate_stack(stack_b, 'b');
 			threshold++;
 		}

@@ -6,7 +6,7 @@
 /*   By: mcrenn <mcrenn@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 10:00:02 by mcrenn            #+#    #+#             */
-/*   Updated: 2026/01/20 17:06:24 by mcrenn           ###   ########.fr       */
+/*   Updated: 2026/01/24 16:30:09 by mcrenn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_node
 int		ft_atoi(const char *nptr);
 int		ft_isdigit(int c);
 int		ft_isint(long int_tester);
+int		ft_isspace(char	c_tester);
 int		max_index(t_node **stack);
 int		pos_index(t_node **stack, int max_index);
 
@@ -62,7 +63,7 @@ void	butterfly_sort(t_node **stack_a, t_node **stack_b);
 void	fill_linked_list(int nb, t_node **stack_a);
 void	swap_stack(t_node **stack, char stack_id);
 void	push_stack(t_node **stack_rmv, t_node **stack_add, char stack_id);
-void	parsing(int args_nb, char const *args_list[], t_node **stack_a);
+void	parsing(int args_nb, char *args_list[], t_node **stack_a);
 void	rotate_stack(t_node **stack, char stack_id);
 void	reverse_rotate_stack(t_node **stack, char stack_id);
 t_node	*node_slct(t_node **stack, int limiter);
