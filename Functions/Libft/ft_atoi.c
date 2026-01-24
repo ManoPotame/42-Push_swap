@@ -6,7 +6,7 @@
 /*   By: mcrenn <mcrenn@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 10:42:54 by mcrenn            #+#    #+#             */
-/*   Updated: 2026/01/16 15:11:36 by mcrenn           ###   ########.fr       */
+/*   Updated: 2026/01/19 15:33:31 by mcrenn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,17 @@ int	ft_atoi(const char *nptr)
 	while (nptr[i])
 	{
 		if (ft_isdigit(nptr[i]) == 0)
-			exit (EXIT_FAILURE); // Fonction Error TBD
+		{
+			write(2, "Error\n", 6);
+			exit (EXIT_FAILURE);
+		}
 		result = (result * 10) + nptr[i] - '0';
 		i++;
 	}
 	if (ft_isint(result * sign) == 0)
-		exit (EXIT_FAILURE); // Fonction error TBD
+	{
+		write(2, "Error\n", 6);
+		exit (EXIT_FAILURE);
+	}
 	return ((int)(result * sign));
 }

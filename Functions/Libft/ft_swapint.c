@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isint.c                                         :+:      :+:    :+:   */
+/*   ft_swapint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcrenn <mcrenn@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/15 14:38:09 by mcrenn            #+#    #+#             */
-/*   Updated: 2026/01/19 15:31:13 by mcrenn           ###   ########.fr       */
+/*   Created: 2026/01/20 10:58:33 by mcrenn            #+#    #+#             */
+/*   Updated: 2026/01/20 10:59:22 by mcrenn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/push_swap.h"
 
-int	ft_isint(long int_tester)
+void	swap_int(int *first_nb, int *second_nb)
 {
-	if (int_tester >= INT_MIN && int_tester <= INT_MAX)
-		return (1);
-	return (0);
+	int	tmp_nb;
+
+	tmp_nb = *first_nb;
+	*first_nb = *second_nb;
+	*second_nb = tmp_nb;
 }
