@@ -6,7 +6,7 @@
 /*   By: mcrenn <mcrenn@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 10:16:39 by mcrenn            #+#    #+#             */
-/*   Updated: 2026/01/24 02:50:53 by mcrenn           ###   ########.fr       */
+/*   Updated: 2026/01/28 15:53:09 by mcrenn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	push_stack(t_node **stack_rmv, t_node **stack_add, char stack_id)
 	t_node	*push_node;
 	t_node	*stack_rmv_scnd;
 
-	if(*stack_rmv)
+	if (*stack_rmv)
 		push_node = node_slct(stack_rmv, 0);
 	else
 		return ;
@@ -45,6 +45,7 @@ void	push_stack(t_node **stack_rmv, t_node **stack_add, char stack_id)
 	ft_putchar_fd(1, stack_id);
 	ft_putchar_fd(1, '\n');
 }
+
 /**
  * @brief Swap the top two element of the sended stack.
  *
@@ -69,6 +70,7 @@ void	swap_stack(t_node **stack, char stack_id)
 		ft_putchar_fd(1, '\n');
 	}
 }
+
 /**
  * @brief Shift all elements of the sended stack up by one (top becomes bottom).
  *
@@ -98,8 +100,10 @@ void	rotate_stack(t_node **stack, char stack_id)
 	ft_putchar_fd(1, stack_id);
 	ft_putchar_fd(1, '\n');
 }
+
 /**
- * @brief Shift all elements of the sended stack down by one (bottom becomes top).
+ * @brief Shift all elements of the sended stack down by one
+ * (bottom becomes top).
  *
  * @param stack The stack that is sent.
  * @param stack_id The name of the stack that will be displayed (a or b).

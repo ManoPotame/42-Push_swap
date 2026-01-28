@@ -6,7 +6,7 @@
 /*   By: mcrenn <mcrenn@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 15:37:19 by mcrenn            #+#    #+#             */
-/*   Updated: 2026/01/24 03:05:52 by mcrenn           ###   ########.fr       */
+/*   Updated: 2026/01/28 15:48:29 by mcrenn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,19 @@ int	max_index(t_node **stack)
 	}
 	return (index);
 }
+
 int	pos_index(t_node **stack, int max_index)
 {
 	t_node	*tmp;
-	int		index;
+	int		pos_index;
 
 	tmp = *stack;
-	index = 0;
+	pos_index = 0;
 	while (tmp)
 	{
 		if (tmp->index == max_index)
-			return (index);
-		index++;
+			return (pos_index);
+		pos_index++;
 		tmp = tmp->next;
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: mcrenn <mcrenn@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 10:43:46 by mcrenn            #+#    #+#             */
-/*   Updated: 2026/01/24 17:07:35 by mcrenn           ###   ########.fr       */
+/*   Updated: 2026/01/28 16:33:39 by mcrenn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ static void	indexing(t_node **stack_a)
 	t_node	*reset_stack;
 
 	current_node = *stack_a;
-	while(current_node)
+	while (current_node)
 	{
 		current_node->index = 0;
 		reset_stack = *stack_a;
 		while (reset_stack)
 		{
-			if(current_node->nb > reset_stack->nb)
+			if (current_node->nb > reset_stack->nb)
 			{
 				current_node->index += 1;
 			}
@@ -33,8 +33,10 @@ static void	indexing(t_node **stack_a)
 		current_node = current_node->next;
 	}
 }
+
 /**
- * @brief Function which analyse the sended argument and check if the string is empty or composed by space only.
+ * @brief Function which analyse the sended argument
+ * and check if the string is empty or composed by space only.
  *
  * @param arg The string to be analysed.
  * @return Return 1 if the string is correct and 0 if not.
@@ -44,7 +46,7 @@ void	test_arg(char *arg)
 	int	i;
 
 	i = 0;
-	if(!arg)
+	if (!arg)
 	{
 		write(2, "Error\n", 6);
 		exit (EXIT_FAILURE);
@@ -84,7 +86,6 @@ void	check_splitted_args(char *splitted_arg)
 		}
 		i++;
 	}
-
 }
 
 void	check_doubles(int nb, t_node **stack_a)
@@ -128,4 +129,3 @@ void	parsing(int args_nb, char *args_list[], t_node **stack_a)
 	}
 	indexing(stack_a);
 }
-

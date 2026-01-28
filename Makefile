@@ -21,7 +21,9 @@ SRC =	ft_atoi.c \
 		ft_substr.c \
 		ft_swapint.c \
 		algorithm.c \
+		error.c \
 		lst_manager.c \
+		minisort.c \
 		parsing.c \
 		push_swap.c \
 		rules.c \

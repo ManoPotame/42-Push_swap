@@ -6,12 +6,11 @@
 /*   By: mcrenn <mcrenn@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 15:37:23 by mcrenn            #+#    #+#             */
-/*   Updated: 2026/01/20 17:58:51 by mcrenn           ###   ########.fr       */
+/*   Updated: 2026/01/28 16:31:32 by mcrenn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/push_swap.h"
-#include <stdio.h>
 
 void	fill_linked_list(int nb, t_node **stack_a)
 {
@@ -38,9 +37,11 @@ t_node	*node_slct(t_node **stack, int limiter)
 
 int	node_counter(t_node **stack)
 {
-	int	counter;
+	int		counter;
 	t_node	*tmp;
 
+	if (stack == NULL || *stack == NULL)
+		return (0);
 	tmp = *stack;
 	counter = 0;
 	while (tmp)
@@ -49,4 +50,22 @@ int	node_counter(t_node **stack)
 		counter++;
 	}
 	return (counter);
+}
+
+int	node_sorted(t_node **stack)
+{
+	t_node	*tmp;
+	int		node_index;
+	int		node_next_index;
+
+	tmp = *stack;
+	while (tmp->next)
+	{
+		node_index = tmp->index;
+		node_next_index = tmp->next->index;
+		if (node_index + 1 != node_next_index)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
 }

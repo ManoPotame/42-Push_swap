@@ -6,13 +6,11 @@
 /*   By: mcrenn <mcrenn@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 10:44:45 by mcrenn            #+#    #+#             */
-/*   Updated: 2026/01/24 03:31:37 by mcrenn           ###   ########.fr       */
+/*   Updated: 2026/01/28 15:27:27 by mcrenn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/push_swap.h"
-#include <stdio.h>
-
 
 static void	reintegration_sort(t_node **stack_a, t_node **stack_b)
 {
