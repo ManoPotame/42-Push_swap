@@ -6,7 +6,7 @@
 /*   By: mcrenn <mcrenn@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 10:43:46 by mcrenn            #+#    #+#             */
-/*   Updated: 2026/01/28 16:33:39 by mcrenn           ###   ########.fr       */
+/*   Updated: 2026/01/30 15:39:51 by mcrenn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,13 @@ static void	indexing(t_node **stack_a)
  * @param arg The string to be analysed.
  * @return Return 1 if the string is correct and 0 if not.
  */
-void	test_arg(char *arg)
+void	test_arg(char *arg, t_node **stack_a)
 {
 	int	i;
 
 	i = 0;
 	if (!arg)
-	{
-		write(2, "Error\n", 6);
-		exit (EXIT_FAILURE);
-	}
+		error_manager(4, stack_a, NULL);
 	while (arg[i])
 	{
 		if (ft_isspace(arg[i]) == 0)
@@ -59,30 +56,27 @@ void	test_arg(char *arg)
 		}
 		i++;
 	}
-	write(2, "Error\n", 6);
-	exit (EXIT_FAILURE);
+	error_manager(0, stack_a, NULL);
 }
 
-void	check_splitted_args(char *splitted_arg)
+static void	check_splitted_args(char **splitted_arg, int idx, t_node **stack_a)
 {
 	int	i;
 
 	i = 0;
-	if (splitted_arg[i] == '+' || splitted_arg[i] == '-')
-	{
+	if (splitted_arg[idx][i] == '+' || splitted_arg[idx][i] == '-')
 		i++;
-		if (splitted_arg[i] == '\0')
-		{
-			write(2, "Error\n", 6);
-			exit (EXIT_FAILURE);
-		}
-	}
-	while (splitted_arg[i])
+	if (!ft_isdigit(splitted_arg[idx][i]))
 	{
-		if (!ft_isdigit(splitted_arg[i]))
+		ft_free_array(splitted_arg);
+		error_manager(3, stack_a, NULL);
+	}
+	while (splitted_arg[idx][i])
+	{
+		if (!ft_isdigit(splitted_arg[idx][i]))
 		{
-			write(2, "Error\n", 6);
-			exit (EXIT_FAILURE);
+			ft_free_array(splitted_arg);
+			error_manager(3, stack_a, NULL);
 		}
 		i++;
 	}
@@ -96,10 +90,7 @@ void	check_doubles(int nb, t_node **stack_a)
 	while (tmp)
 	{
 		if (tmp->nb == nb)
-		{
-			write(2, "Error\n", 6);
-			exit (EXIT_FAILURE);
-		}
+			error_manager(1, stack_a, NULL);
 		tmp = tmp->next;
 	}
 }
@@ -115,16 +106,19 @@ void	parsing(int args_nb, char *args_list[], t_node **stack_a)
 	while (i < args_nb)
 	{
 		j = 0;
-		test_arg(args_list[i]);
+		test_arg(args_list[i], stack_a);
 		separated_args = ft_split(args_list[i], ' ');
+		if (!separated_args)
+			error_manager(5, stack_a, NULL);
 		while (separated_args[j])
 		{
-			check_splitted_args(separated_args[j]);
-			nb = ft_atoi(separated_args[j]);
+			check_splitted_args(separated_args, j, stack_a);
+			nb = ft_atoi(separated_args[j], separated_args, stack_a);
 			check_doubles(nb, stack_a);
 			fill_linked_list(nb, stack_a);
 			j++;
 		}
+		ft_free_array(separated_args);
 		i++;
 	}
 	indexing(stack_a);

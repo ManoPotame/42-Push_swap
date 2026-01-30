@@ -6,37 +6,37 @@
 /*   By: mcrenn <mcrenn@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 10:42:54 by mcrenn            #+#    #+#             */
-/*   Updated: 2026/01/28 15:44:39 by mcrenn           ###   ########.fr       */
+/*   Updated: 2026/01/30 15:39:26 by mcrenn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/push_swap.h"
 
-int	ft_atoi(const char *nptr)
+int	ft_atoi(const char *nptr, char **splitted_arg, t_node **stack_a)
 {
 	int		i;
 	int		sign;
 	long	result;
 
-	if (!nptr)
-		return (0);
 	i = 0;
 	sign = 1;
 	result = 0;
 	if (nptr[i] == '-' || nptr[i] == '+')
 	{
-		if (nptr[i] == '-')
+		if (nptr[i++] == '-')
 			sign *= -1;
-		i++;
 	}
 	while (nptr[i])
 	{
 		if (ft_isdigit(nptr[i]) == 0)
-			error();
-		result = (result * 10) + nptr[i] - '0';
-		i++;
+			break ;
+		result = (result * 10) + nptr[i++] - '0';
 	}
-	if (ft_isint(result * sign) == 0)
-		error();
+	if (ft_isint(result * sign) == 0 || nptr[i] != '\0')
+		ft_free_array(splitted_arg);
+	if (nptr[i] != '\0')
+		error_manager(3, stack_a, NULL);
+	else if (ft_isint(result * sign) == 0)
+		error_manager(2, stack_a, NULL);
 	return ((int)(result * sign));
 }

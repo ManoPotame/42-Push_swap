@@ -6,7 +6,7 @@
 /*   By: mcrenn <mcrenn@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 15:37:23 by mcrenn            #+#    #+#             */
-/*   Updated: 2026/01/28 16:31:32 by mcrenn           ###   ########.fr       */
+/*   Updated: 2026/01/30 15:26:15 by mcrenn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	fill_linked_list(int nb, t_node **stack_a)
 	t_node	*node;
 
 	node = ft_lstnew(nb);
+	if (!node)
+		ft_lstclear(stack_a);
 	ft_lstadd_back(stack_a, node);
 }
 

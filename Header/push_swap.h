@@ -6,7 +6,7 @@
 /*   By: mcrenn <mcrenn@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 10:00:02 by mcrenn            #+#    #+#             */
-/*   Updated: 2026/01/28 16:50:34 by mcrenn           ###   ########.fr       */
+/*   Updated: 2026/01/30 15:19:43 by mcrenn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_node
 }	t_node;
 
 // Libft
-int		ft_atoi(const char *nptr);
+int	ft_atoi(const char *nptr, char **splitted_arg, t_node **stack_a);
 int		ft_isdigit(int c);
 int		ft_isint(long int_tester);
 int		ft_isspace(char c_tester);
@@ -43,7 +43,9 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
+void	ft_free_array(char **array);
 void	ft_lstadd_back(t_node **lst, t_node *new);
+void	ft_lstclear(t_node **lst);
 void	*ft_memset(void *s, int c, size_t n);
 void	ft_putchar_fd(int fd, char c);
 void	swap_int(int *first_nb, int *second_nb);
@@ -68,6 +70,6 @@ void	swap_stack(t_node **stack, char stack_id);
 void	push_stack(t_node **stack_rmv, t_node **stack_add, char stack_id);
 void	rotate_stack(t_node **stack, char stack_id);
 void	reverse_rotate_stack(t_node **stack, char stack_id);
-void	error(void);
+void	error_manager(int error_code, t_node **stack_a, t_node **stack_b);
 
 #endif

@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcrenn <mcrenn@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/14 10:05:45 by mcrenn            #+#    #+#             */
-/*   Updated: 2026/01/30 15:34:16 by mcrenn           ###   ########.fr       */
+/*   Created: 2025/11/05 12:45:28 by mcrenn            #+#    #+#             */
+/*   Updated: 2026/01/30 15:05:19 by mcrenn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/push_swap.h"
 
-int	main(int argc, char *argv[])
+void	ft_lstclear(t_node **lst)
 {
-	int		nb_node;
-	t_node	*stack_a;
-	t_node	*stack_b;
+	t_node	*nodeforward;
 
-	stack_a = NULL;
-	stack_b = NULL;
-	parsing(argc, argv, &stack_a);
-	if (node_sorted(&stack_a) == 1)
+	if (!lst || !*lst)
+		return ;
+	while (*lst)
 	{
-		ft_lstclear(&stack_a);
-		return (0);
+		nodeforward = (*lst)->next;
+		free(*lst);
+		*lst = nodeforward;
 	}
-	nb_node = node_counter(&stack_a);
-	if (nb_node > 5)
-		butterfly_sort(&stack_a, &stack_b);
-	else
-		choose_sort(&stack_a, &stack_b, nb_node);
-	ft_lstclear(&stack_a);
+	*lst = NULL;
 }
