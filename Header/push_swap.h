@@ -6,7 +6,7 @@
 /*   By: mcrenn <mcrenn@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 10:00:02 by mcrenn            #+#    #+#             */
-/*   Updated: 2026/01/30 15:19:43 by mcrenn           ###   ########.fr       */
+/*   Updated: 2026/02/02 15:55:51 by mcrenn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,6 @@ void	swap_stack(t_node **stack, char stack_id);
 void	push_stack(t_node **stack_rmv, t_node **stack_add, char stack_id);
 void	rotate_stack(t_node **stack, char stack_id);
 void	reverse_rotate_stack(t_node **stack, char stack_id);
-void	error_manager(int error_code, t_node **stack_a, t_node **stack_b);
+void	error_manager(t_node **stack_a);
 
 #endif

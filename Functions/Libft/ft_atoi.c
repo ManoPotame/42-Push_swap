@@ -6,7 +6,7 @@
 /*   By: mcrenn <mcrenn@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 10:42:54 by mcrenn            #+#    #+#             */
-/*   Updated: 2026/01/30 15:39:26 by mcrenn           ###   ########.fr       */
+/*   Updated: 2026/02/02 15:56:26 by mcrenn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ int	ft_atoi(const char *nptr, char **splitted_arg, t_node **stack_a)
 	if (ft_isint(result * sign) == 0 || nptr[i] != '\0')
 		ft_free_array(splitted_arg);
 	if (nptr[i] != '\0')
-		error_manager(3, stack_a, NULL);
+		error_manager(stack_a);
 	else if (ft_isint(result * sign) == 0)
-		error_manager(2, stack_a, NULL);
+		error_manager(stack_a);
 	return ((int)(result * sign));
 }

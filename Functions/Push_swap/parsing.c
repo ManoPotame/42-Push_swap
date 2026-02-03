@@ -6,7 +6,7 @@
 /*   By: mcrenn <mcrenn@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 10:43:46 by mcrenn            #+#    #+#             */
-/*   Updated: 2026/01/30 15:39:51 by mcrenn           ###   ########.fr       */
+/*   Updated: 2026/02/02 15:57:15 by mcrenn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	test_arg(char *arg, t_node **stack_a)
 
 	i = 0;
 	if (!arg)
-		error_manager(4, stack_a, NULL);
+		error_manager(stack_a);
 	while (arg[i])
 	{
 		if (ft_isspace(arg[i]) == 0)
@@ -56,7 +56,7 @@ void	test_arg(char *arg, t_node **stack_a)
 		}
 		i++;
 	}
-	error_manager(0, stack_a, NULL);
+	error_manager(stack_a);
 }
 
 static void	check_splitted_args(char **splitted_arg, int idx, t_node **stack_a)
@@ -69,14 +69,14 @@ static void	check_splitted_args(char **splitted_arg, int idx, t_node **stack_a)
 	if (!ft_isdigit(splitted_arg[idx][i]))
 	{
 		ft_free_array(splitted_arg);
-		error_manager(3, stack_a, NULL);
+		error_manager(stack_a);
 	}
 	while (splitted_arg[idx][i])
 	{
 		if (!ft_isdigit(splitted_arg[idx][i]))
 		{
 			ft_free_array(splitted_arg);
-			error_manager(3, stack_a, NULL);
+			error_manager(stack_a);
 		}
 		i++;
 	}
@@ -90,7 +90,7 @@ void	check_doubles(int nb, t_node **stack_a)
 	while (tmp)
 	{
 		if (tmp->nb == nb)
-			error_manager(1, stack_a, NULL);
+			error_manager(stack_a);
 		tmp = tmp->next;
 	}
 }
@@ -109,7 +109,7 @@ void	parsing(int args_nb, char *args_list[], t_node **stack_a)
 		test_arg(args_list[i], stack_a);
 		separated_args = ft_split(args_list[i], ' ');
 		if (!separated_args)
-			error_manager(5, stack_a, NULL);
+			error_manager(stack_a);
 		while (separated_args[j])
 		{
 			check_splitted_args(separated_args, j, stack_a);
