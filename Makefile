@@ -1,5 +1,4 @@
-.PHONY = clean fclean re all
-
+CFLAGS = -Wall -Wextra -Werror -g
 NAME = push_swap
 
 SRC =	ft_atoi.c \
@@ -30,9 +29,7 @@ SRC =	ft_atoi.c \
 		push_swap.c \
 		rules.c \
 
-CFLAGS = -Wall -Wextra -Werror -g
-
-OBJDIR = Objet/
+OBJDIR = objects/
 
 LIBFTDIR = Functions/Libft/
 
@@ -60,3 +57,5 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean $(NAME)
+
+.PHONY = clean fclean re all

@@ -6,7 +6,7 @@
 /*   By: mcrenn <mcrenn@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 10:05:45 by mcrenn            #+#    #+#             */
-/*   Updated: 2026/01/30 15:34:16 by mcrenn           ###   ########.fr       */
+/*   Updated: 2026/02/03 15:05:42 by mcrenn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	main(int argc, char *argv[])
 	t_node	*stack_a;
 	t_node	*stack_b;
 
+	if (argc < 2)
+		return (1);
 	stack_a = NULL;
 	stack_b = NULL;
 	parsing(argc, argv, &stack_a);

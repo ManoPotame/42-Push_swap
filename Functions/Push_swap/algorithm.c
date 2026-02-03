@@ -6,12 +6,20 @@
 /*   By: mcrenn <mcrenn@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 10:44:45 by mcrenn            #+#    #+#             */
-/*   Updated: 2026/01/28 15:27:27 by mcrenn           ###   ########.fr       */
+/*   Updated: 2026/02/03 13:48:47 by mcrenn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/push_swap.h"
 
+/**
+ * @brief Function which push all element from stack_a to stack_b.
+ * Depending on the position of index use "rb" "rrb" to push the next node
+ * correctly.
+ *
+ * @param stack_a The entier linked list A.
+ * @param stack_b The entier linked list B.
+ */
 static void	reintegration_sort(t_node **stack_a, t_node **stack_b)
 {
 	int	index_max;
@@ -35,6 +43,13 @@ static void	reintegration_sort(t_node **stack_a, t_node **stack_b)
 	}
 }
 
+/**
+ * @brief Sorting function which push all element from stack_a to stack_b
+ * depending on the node index of stack_a, the threshold and delta.
+ *
+ * @param stack_a The entier linked list A.
+ * @param stack_b The entier linked list B.
+ */
 void	butterfly_sort(t_node **stack_a, t_node **stack_b)
 {
 	int	threshold;
